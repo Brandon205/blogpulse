@@ -10,13 +10,16 @@
 <% comments.forEach(function(comment) { %>
     <h4><%= comment.name %> says:</h4>
     <p><%= comment.content %></p>
+    <form action="/posts/<%= post.id %>/comments/<%= comment.id %>/?_method=DELETE" method="POST">
+        <input id="submit" type="submit" value="X">
+    </form>
 <% }); %>
 
 <hr>
 
 <h2>Add Comment</h2>
 
-<form action="/posts/<%= post.id %>" method="POST">
+<form action="/posts/<%= post.id %>/comments" method="POST">
     <input type="text" name="name" id="name" placeholder="Your Name"><br />
     <input type="text" name="content" id="content" placeholder="Your Comment"><br />
     <input type="submit" value="Add Comment" id="submit">
