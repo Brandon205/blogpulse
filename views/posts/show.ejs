@@ -1,4 +1,5 @@
 <h2><%= post.title %></h2>
+<h3>By: <%= author.name %></h3>
 
 <p><%= post.content %></p>
 
@@ -9,7 +10,7 @@
 <% comments.forEach(function(comment) { %>
     <h4><%= comment.name %> says:</h4>
     <p><%= comment.content %></p>
-<% }) %>
+<% }); %>
 
 <hr>
 
@@ -17,6 +18,6 @@
 
 <form action="/posts/<%= post.id %>" method="POST">
     <input type="text" name="name" id="name" placeholder="Your Name"><br />
-    <input type="text" name="content" id="content" placeholder="Comment"><br />
-    <input type="submit" value="Add Comment">
+    <input type="text" name="content" id="content" placeholder="Your Comment"><br />
+    <input type="submit" value="Add Comment" id="submit">
 </form>

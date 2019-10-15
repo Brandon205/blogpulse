@@ -1,9 +1,9 @@
 <h2><%= author.name %></h2>
-<p><%= author.mustacheSize %></p>
+<p>Mustache Size: <%= author.mustacheSize %></p>
 
 <hr>
 
-<h2>Posts by this author</h2>
+<h2>Posts by <%= author.name %> </h2>
 
 <% posts.forEach(function(post) { %>
     <p><a href="/posts/<%= post.id %>"><%= post.title %></a></p>
@@ -16,5 +16,5 @@
 <form action="/authors/<%= author.id %>/posts" method="POST">
     <input type="text" name="title" id="title" placeholder="Title"><br />
     <input type="text" name="content" id="content" placeholder="Content"><br />
-    <input type="submit" value="Add Post">
+    <input type="submit" value="Add Post" id="submit">
 </form>

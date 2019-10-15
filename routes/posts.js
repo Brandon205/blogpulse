@@ -16,8 +16,10 @@ router.get('/:id', function(req, res) {
     db.post.findByPk(parseInt(req.params.id))
     .then(function(post) {
         post.getComments().then(function(comments) {
-            res.render('posts/show', { post,  comments })
-        }).catch(err=>console.log(err));
+            post.getAuthor().then(function(author) {
+                res.render('posts/show', { post,  comments, author });
+            });
+        });
     });
 });
 
@@ -25,8 +27,8 @@ router.post('/:id', function(req, res) {
     db.post.findByPk(parseInt(req.params.id)).then(function(post) {
         post.createComment(req.body).then(function(comment) {
             res.redirect(`/posts/${req.params.id}`);
-        })
-    })
+        });
+    });
 });
 
 module.exports = router;
